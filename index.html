@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="pl">
+<head>
+
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<title>Czas na swiecie</title>
+    
+    <script type="text/javascript">
+        <!-- 
+        //written by Bogdan Blaszczak "BlaTek"
+        //homepage http://blatek.board.pl
+
+        function zegarek(offs){
+         offs=offs+lato_offset;
+         var g,m,s,teraz=new Date();
+         with(teraz){
+          setTime(getTime()+(offs*3600000));
+          g=getUTCHours(); m=getUTCMinutes(); s=getUTCSeconds()}
+
+         var czas=" "+(g<10?"0":"")+g;
+         czas+=(m<10?":0":":")+m;
+         czas+=(s<10?":0":":")+s;
+         return czas;
+        }
+
+        function zegarStart(){
+         var lato=new Date(2000,7,1), teraz=new Date();
+         lato_offset=(teraz.getTimezoneOffset()==lato.getTimezoneOffset())?1:0;
+         ustawCzas();
+         setInterval('ustawCzas()',1000);
+        }
+
+        function ustawCzas(){
+         function Czas(id,offs){
+          document.clock.elements[id].value=zegarek(offs);
+         }
+         Czas("newyork", -5);
+         Czas("lublin", 1);
+         Czas("sydney", 10);
+        }
+        // -->
+    </script>
+	
+	
+</head>
+
+<body onload="zegarStart()">
+
+    <form name="clock">
+        <table border="0" width="500">
+
+         <tr>
+             <td><input name="newyork" size="10"> New Jork</td>
+             <td><input name="lublin" size="10"> lublin </td>
+        </tr>
+            
+         <tr>
+             <td><input name="sydney" size="10"> Sydney </td>
+        </tr>
+            
+
+        </table>
+    </form>
+	
+</body>
+</html>
